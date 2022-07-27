@@ -1,7 +1,3 @@
-<<<<<<< HEAD
 # ignore the file database
 db\database.ini
-=======
-# ignore the file database
-db\database.ini
->>>>>>> 039af54585d1ac8f9ffbeb153b58f808015072c8
+
