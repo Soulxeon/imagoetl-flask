@@ -1,5 +1,5 @@
 import psycopg2
-from db.config import config
+from db_imago.config import config
 
 def connect():
     """ Connect to the PostgreSQL database server """

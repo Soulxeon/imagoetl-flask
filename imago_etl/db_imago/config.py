@@ -1,13 +1,12 @@
 from configparser import ConfigParser
 import os
 
-def config(filename=os.getcwd() +'\imago_etl\db\database.ini', section='postgresql'):
-    # create a parser
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+def config(filename=os.path.join(__location__, 'database.ini'), section='postgresql'):
     parser = ConfigParser()
-    # read config file
     parser.read(filename)
 
-    # get section, default to postgresql
     db = {}
     if parser.has_section(section):
         params = parser.items(section)
