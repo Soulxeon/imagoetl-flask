@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 import os
 
-def config(filename=os.getcwd() +'\db\database.ini', section='postgresql'):
+def config(filename=os.getcwd() +'\imago_etl\db\database.ini', section='postgresql'):
     # create a parser
     parser = ConfigParser()
     # read config file
