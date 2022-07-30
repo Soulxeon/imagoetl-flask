@@ -11,5 +11,11 @@ def connect():
     print('Connecting to the PostgreSQL database...')
     conn = psycopg2.connect(**params)
 
-    return (conn)
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM test;')
+    testdata = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    return (testdata)
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from db_imago.connect import connect
 from csv_imago.read_df import read_data
 
@@ -6,18 +6,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    conn = connect()
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM test;')
-    testdata = cur.fetchall()
-    cur.close()
-    conn.close()
-    return render_template('index.html', testdata=testdata)
+    db_data = connect()
+    return render_template('index.html', testdata=db_data)
 
-@app.route('/table')
-def table():
-    # converting csv to html
-    data = read_data()
-    return render_template('table.html', tables=[data.to_html()], titles=[''])
+@app.route('/csv', methods=['GET','POST'])
+def csv_index():
+    return render_template('csvform.html')
 
-app.run(port=5000)
+@app.route('/data', methods=['GET','POST'])
+def data():
+    if request.method == 'POST':
+        f = request.files["csvdata"]
+        data = read_data(f)
+        return render_template('table.html', tables=[data.to_html()], titles=[''])
+
+app.run(host="0.0.0.0", port=5000)
