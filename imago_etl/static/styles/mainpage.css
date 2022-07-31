@@ -1,0 +1,14 @@
+
+.main__nav{
+    color: #d64161;
+    font-size: 3em;
+    margin-left: 50px;
+    text-decoration: none;
+    background-color: YellowGreen;
+}
+
+.content{
+        color: #d64161;
+        margin-left: 50px;
+        font-size: 20px;
+}

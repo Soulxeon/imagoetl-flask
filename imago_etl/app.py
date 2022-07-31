@@ -3,6 +3,7 @@ from db_imago.connect import connect
 from csv_imago.read_df import read_data
 
 app = Flask(__name__)
+# app.static_folder = 'static'
 
 @app.route('/')
 def index():
@@ -20,4 +21,4 @@ def data():
         data = read_data(f)
         return render_template('table.html', tables=[data.to_html()], titles=[''])
 
-app.run(host="0.0.0.0", port=5000)
+app.run(host="0.0.0.0", port=5000, debug=True)
